@@ -154,7 +154,7 @@ function App() {
   const colorClasses = getColorClasses(prediction);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" style={{ fontFamily: "'Gabarito', sans-serif" }}>
+    <div className="relative h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" style={{ fontFamily: "'Gabarito', sans-serif" }}>
       {/* Animated background blobs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-20 -top-20 h-96 w-96 animate-blob rounded-full bg-blue-400/20 mix-blend-multiply blur-3xl filter"></div>
@@ -207,10 +207,10 @@ function App() {
         `}
       </style>
 
-      <div className="relative flex min-h-screen">
+      <div className="relative flex h-full">
         {/* Left sidebar - Input controls */}
-        <div className="w-80 border-r border-slate-200/60 bg-white/60 backdrop-blur-md">
-          <div className="sticky top-0 flex h-screen flex-col">
+        <div className="w-80 border-r border-slate-200/60 bg-white/60 backdrop-blur-md flex-shrink-0">
+          <div className="flex h-full flex-col">
             {/* Header */}
             <div className="border-b border-slate-200/60 bg-gradient-to-r from-slate-50/80 to-transparent p-6">
               <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-xl font-bold text-white shadow-lg shadow-blue-500/30">
@@ -221,8 +221,8 @@ function App() {
             </div>
 
             {/* Scrollable inputs */}
-            <div className="flex-1 overflow-y-auto p-4">
-              <div className="space-y-3">
+            <div className="flex-1 overflow-y-auto p-4" style={{ direction: 'rtl' }}>
+              <div className="space-y-3" style={{ direction: 'ltr' }}>
                 {allFields.map((field) => (
                   <label key={field.name} className="block text-xs font-medium text-slate-700">
                     {field.label}
@@ -256,7 +256,7 @@ function App() {
         </div>
 
         {/* Right side - Large result display */}
-        <div className="flex flex-1 items-center justify-center p-12">
+        <div className="flex flex-1 items-center justify-center p-6 md:p-12 overflow-y-auto">
           {prediction ? (
             <div className="relative w-full max-w-3xl">
               {/* Glow effect behind result */}
@@ -264,7 +264,7 @@ function App() {
               
               <div className="relative overflow-hidden rounded-3xl border border-slate-200/60 bg-white/90 shadow-2xl backdrop-blur-sm">
                 {/* Result header */}
-                <div className="border-b border-slate-200/60 bg-gradient-to-r from-slate-50/80 to-transparent px-8 py-6">
+                <div className="border-b border-slate-200/60 bg-linear-to-r from-slate-50/80 to-transparent px-8 py-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium uppercase tracking-wider text-slate-500">Classification Result</p>
@@ -277,8 +277,8 @@ function App() {
                 </div>
 
                 {/* Large result display */}
-                <div className="px-8 py-16 text-center">
-                  <div className={`mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br ${colorClasses.gradient} shadow-xl ${colorClasses.shadow}`}>
+                <div className="px-6 md:px-8 py-8 md:py-16 text-center">
+                  <div className={`mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-linear-to-br ${colorClasses.gradient} shadow-xl ${colorClasses.shadow}`}>
                     <svg className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
@@ -312,7 +312,7 @@ function App() {
                 </div>
 
                 {/* Bottom tips */}
-                <div className={`border-t border-slate-200/60 bg-gradient-to-br ${colorClasses.bg} to-transparent px-8 py-6`}>
+                <div className={`border-t border-slate-200/60 bg-linear-to-br ${colorClasses.bg} to-transparent px-8 py-6`}>
                   <h3 className="mb-3 text-sm font-semibold text-slate-900">💡 Recommendations</h3>
                   <ul className="space-y-2 text-sm text-slate-700">
                     <li className="flex items-start gap-2">
@@ -333,7 +333,7 @@ function App() {
             </div>
           ) : (
             <div className="w-full max-w-2xl text-center">
-              <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-slate-100 to-slate-200">
+              <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-to-br from-slate-100 to-slate-200">
                 <svg className="h-16 w-16 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
